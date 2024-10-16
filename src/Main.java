@@ -29,5 +29,6 @@ public class Main {
         }
 
         executor.shutdown();
+        System.out.println("test");
     }
 }
