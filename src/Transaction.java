@@ -29,8 +29,9 @@ public class Transaction {
 
     @Override
     public String toString() {
+        String formattedPrice = String.format("%.2f", pricePerShare);
         return "Transaction: " + quantity + " shares of " + offer.getShare().getCompanyName() +
                 " sold from " + offer.getSellerId() + " to " + request.getBuyerId() +
-                " at " + pricePerShare + " per share.";
+                " at " + formattedPrice + " per share.";
     }
 }
