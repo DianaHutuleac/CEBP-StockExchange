@@ -13,11 +13,11 @@ public class Seller implements Runnable {
     @Override
     public void run() {
         while (true) {
-            Share share = new Share("Company " + (random.nextInt(3) + 1), 1000);
+            Stock stock = new Stock("Company " + (random.nextInt(3) + 1), 1000);
             int quantity = random.nextInt(10) + 1;
             double price = random.nextDouble() * 100;
 
-            Offer offer = new Offer(share, quantity, price, sellerId);
+            Offer offer = new Offer(stock, quantity, price, sellerId);
             stockExchange.addOffer(offer);
 
             try {

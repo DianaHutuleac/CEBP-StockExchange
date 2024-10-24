@@ -1,8 +1,8 @@
-public class Share {
+public class Stock {
     private String companyName;
     private int totalShares;
 
-    public Share(String companyName, int totalShares) {
+    public Stock(String companyName, int totalShares) {
         this.companyName = companyName;
         this.totalShares = totalShares;
     }

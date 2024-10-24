@@ -1,18 +1,22 @@
-public class Offer {
-    private Share share;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class Offer {
+    private Stock stock;
     private int quantity;
     private double pricePerShare;
     private String sellerId;
+    private final Lock lock = new ReentrantLock();  // Lock for this specific offer
 
-    public Offer(Share share, int quantity, double pricePerShare, String sellerId) {
-        this.share = share;
+    public Offer(Stock share, int quantity, double pricePerShare, String sellerId) {
+        this.stock = share;
         this.quantity = quantity;
         this.pricePerShare = pricePerShare;
         this.sellerId = sellerId;
     }
 
-    public Share getShare() {
-        return share;
+    public Stock getShare() {
+        return stock;
     }
 
     public int getQuantity() {
@@ -33,5 +37,9 @@ public class Offer {
 
     public boolean isFulfilled() {
         return quantity <= 0;
+    }
+
+    public Lock getLock() {
+        return lock;  // Provide access to the specific lock for this offer
     }
 }

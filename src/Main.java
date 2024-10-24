@@ -6,7 +6,7 @@ public class Main {
 
         StockExchange stockExchange = new StockExchange();
 
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        ExecutorService executor = Executors.newCachedThreadPool();
 
         for (int i = 1; i <= 5; i++) {
             Buyer buyer = new Buyer("Buyer " + i, stockExchange);

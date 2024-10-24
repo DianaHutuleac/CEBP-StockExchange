@@ -1,18 +1,23 @@
-public class Request {
-    private Share share;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+// Request Class
+class Request {
+    private Stock stock;
     private int quantity;
     private double maxPricePerShare;
     private String buyerId;
+    private final Lock lock = new ReentrantLock();  // Lock for this specific request
 
-    public Request(Share share, int quantity, double maxPricePerShare, String buyerId) {
-        this.share = share;
+    public Request(Stock stock, int quantity, double maxPricePerShare, String buyerId) {
+        this.stock = stock;
         this.quantity = quantity;
         this.maxPricePerShare = maxPricePerShare;
         this.buyerId = buyerId;
     }
 
-    public Share getShare() {
-        return share;
+    public Stock getShare() {
+        return stock;
     }
 
     public int getQuantity() {
@@ -33,5 +38,9 @@ public class Request {
 
     public boolean isFulfilled() {
         return quantity <= 0;
+    }
+
+    public Lock getLock() {
+        return lock;  // Provide access to the specific lock for this request
     }
 }
