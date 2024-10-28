@@ -1,9 +1,22 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
-        System.out.println("Hello, Robert!");
-        System.out.println("Hello, Chary!");
-        System.out.println("Hello, Diana");
+        StockExchange stockExchange = new StockExchange();
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+
+        for (int i = 1; i <= 5; i++) {
+            Buyer buyer = new Buyer("Buyer " + i, stockExchange);
+            Seller seller = new Seller("Seller " + i, stockExchange);
+
+            executor.submit(buyer);
+            executor.submit(seller);
+        }
+
+        executor.shutdown();
+
     }
 }
