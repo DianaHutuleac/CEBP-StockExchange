@@ -36,7 +36,7 @@ public class StockExchange {
                             double transactionPrice = offer.getPricePerShare();
 
                             // Synchronize only for the transaction addition
-                            synchronized (this) {
+                            //synchronized (this) {
                                 Transaction transaction = new Transaction(offer, request, transactionQuantity, transactionPrice);
                                 transactions.add(transaction);
 
@@ -44,7 +44,7 @@ public class StockExchange {
                                 request.setQuantity(request.getQuantity() - transactionQuantity);
 
                                 System.out.println(transaction);
-                            }
+                            //}
 
                             if (offer.isFulfilled()) {
                                 break;  // Move to the next offer if it's fully sold

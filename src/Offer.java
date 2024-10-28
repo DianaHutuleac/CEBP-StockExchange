@@ -6,7 +6,7 @@ class Offer {
     private int quantity;
     private double pricePerShare;
     private String sellerId;
-    private final Lock lock = new ReentrantLock();  // Lock for this specific offer
+    private final Lock lock = new ReentrantLock();
 
     public Offer(Stock share, int quantity, double pricePerShare, String sellerId) {
         this.stock = share;
